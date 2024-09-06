@@ -17,7 +17,7 @@ class Monster implements Movable, Obstacle {
 
   @Override
   public void isBlocking() {
-    System.out.println("A Monster is blocking your path");
+    System.out.println("You encountered a monster, time to fight!");
   }
 
   @Override

@@ -53,6 +53,7 @@ class Maze {
   }
 
   public void removeItem(Position position) {
+    getCell(position).hasPlayer = true;
     getCell(position).item = null;
   }
 

@@ -51,9 +51,30 @@ class Player implements Movable {
         obstacle.isBlocking();
       }
     }
+
+    Item item = maze.getCell(position).item;
+    if (item != null) {
+      this.pickUpItem(item);
+      maze.removeItem(position);
+
+    }
     maze.setPath(prior);
     maze.setPlayer(position);
 
+  }
+
+  public void pickUpItem(Item item) {
+    items.add(item);
+    if (item instanceof Sword sword){
+      sword.giveStrength(this);
+      System.out.println("You picked up a " + sword.getName());
+    } else if (item instanceof Bow bow) {
+      bow.giveStrength(this);
+      System.out.println("You picked up a " + bow.getName());
+    } else if (item instanceof Potion potion) {
+      potion.giveHealth(this);
+      System.out.println("You picked up a " + potion.getName());
+    }
   }
 
   public void setStrength(int strength) {
@@ -62,6 +83,13 @@ class Player implements Movable {
 
   public int getStrength() {
     return strength;
+  }
+
+  public int getHealth() {
+    return health;
+  }
+  public void setHealth(int health) {
+    this.health = health;
   }
 
   public Position getPosition() {
