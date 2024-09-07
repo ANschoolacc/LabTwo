@@ -1,6 +1,6 @@
 package se.labTwo;
 
-class Cell {
+public class Cell {
   Obstacle obstacle;
   Player player;
   Item item;

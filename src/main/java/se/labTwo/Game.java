@@ -16,7 +16,7 @@ public class Game {
   maze.placeItem(upgrade);
   maze.placeItem(treasure);
 
-  while (true) {
+  while (player.getHealth() > 0) {
     player.getStats();
     maze.showMaze();
     player.move(moveInput(sc), maze);
@@ -24,6 +24,7 @@ public class Game {
       monster.move('W', maze);//Random move
     }
   }
+  System.exit(0);
   }
 
   public static char moveInput(Scanner sc){

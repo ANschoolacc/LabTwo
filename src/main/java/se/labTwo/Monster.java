@@ -5,7 +5,7 @@ import java.util.Random;
 public class Monster implements Movable, Obstacle {
   final String name = "Monster";
   private int health;
-  private int strength;
+  private final int strength;
   private final Random rnd = new Random();
   Position position;
 
@@ -17,7 +17,7 @@ public class Monster implements Movable, Obstacle {
 
   @Override
   public void isBlocking() {
-    System.out.println("You encountered a monster, time to fight!");
+    System.out.println("You encountered a " + this.getName() + ", time to fight!");
   }
 
   @Override
@@ -63,4 +63,7 @@ public class Monster implements Movable, Obstacle {
     this.health = health;
   }
 
+  public String getName() {
+    return name;
+  }
 }

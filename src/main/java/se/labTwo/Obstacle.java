@@ -1,6 +1,6 @@
 package se.labTwo;
 
-interface Obstacle {
+public interface Obstacle {
 
 
   void isBlocking();
