@@ -2,7 +2,7 @@ package se.labTwo;
 
 import java.util.Random;
 
-class Monster implements Movable, Obstacle {
+public class Monster implements Movable, Obstacle {
   final String name = "Monster";
   private int health;
   private int strength;
@@ -17,7 +17,7 @@ class Monster implements Movable, Obstacle {
 
   @Override
   public void isBlocking() {
-    System.out.println("A Monster is blocking your path");
+    System.out.println("You encountered a monster, time to fight!");
   }
 
   @Override
@@ -41,12 +41,14 @@ class Monster implements Movable, Obstacle {
     if (maze.outOfBounds(this.position) || maze.getCell(this.position).hasObstacle()) {
       this.position = prior;
     }
-    if (maze.getCell(position).hasPlayer) {
+    Player player = maze.getCell(position).player;
+    if (player != null) {
       this.isBlocking();
+      player.fight(player, this);
       maze.removeMonster(position);
     }
     maze.setPath(prior);
-    maze.setMonster(position);
+    maze.setMonster(position, this);
   }
 
   public int getHealth() {

@@ -9,10 +9,10 @@ class Maze {
         {new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(null), new Cell(null), new Cell(null), new Cell(null), new Cell(new Wall())},
         {new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(null), new Cell(new Wall())},
         {new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(null), new Cell(null), new Cell(new Wall())},
-        {new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall())},
+        {new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(new Wall())},
         {new Cell(new Wall()), new Cell(null), new Cell(new Wall()), new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(null), new Cell(new Wall())},
-        {new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(null), new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(new Wall())},
-        {new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(null), new Cell(new Wall())}
+        {new Cell(new Wall()), new Cell(null), new Cell(null), new Cell(null), new Cell(new Wall()), new Cell(new Wall()), new Cell(null), new Cell(new Wall())},
+        {new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall()), new Cell(new Wall())}
     };
   }
 
@@ -26,30 +26,29 @@ class Maze {
 
   public void setPath(Position position) {
     Cell cell = maze[position.x()][position.y()];
-    cell.hasPlayer = false;
+    cell.player = null;
     cell.item = null;
     cell.obstacle = null;
   }
 
-  public void setPlayer(Position position) {
+  public void setPlayer(Position position, Player player) {
     Cell cell = maze[position.x()][position.y()];
-    cell.hasPlayer = true;
+    cell.player = player;
     cell.item = null;
     cell.obstacle = null;
 
   }
 
-  public void setMonster(Position position) {
-    getCell(position).obstacle = new Monster(position, 2, 2);
+  public void setMonster(Position position, Monster monster) {
+    getCell(position).obstacle = monster;
   }
 
   public void removeMonster(Position position) {
     maze[position.x()][position.y()].obstacle = null;
-    maze[position.x()][position.y()].hasPlayer = true;
   }
 
   public void placeItem(Item item) {
-    getCell(item.position).item = item;
+    getCell(item.getPosition()).item = item;
   }
 
   public void removeItem(Position position) {
