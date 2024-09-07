@@ -1,6 +1,6 @@
 package se.labTwo;
 
-class Maze {
+public class Maze {
   private final Cell[][] maze;
 
   public Maze() {
