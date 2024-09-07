@@ -16,6 +16,9 @@ public class Game {
   maze.placeItem(upgrade);
   maze.placeItem(treasure);
 
+    System.out.println("Move the P (you) with W,A,S,D and then press enter");
+    System.out.println("U stands for upgrade, M for monster and T for treasure");
+    System.out.println("Your goal is to get the treasure, but beware of the incredibly scary monster!");
   while (player.getHealth() > 0) {
     player.getStats();
     maze.showMaze();
