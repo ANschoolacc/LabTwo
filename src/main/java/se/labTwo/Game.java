@@ -6,19 +6,22 @@ public class Game {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-  Player p1 = new Player();
-  Monster m1 = new Monster(new Position(3,3), 2, 2);
-  Item item = new Sword(new Position(6,2));
+  Player player = new Player(2,1);
+  Monster monster = new Monster(new Position(3,3), 2, 2);
+  Item upgrade = new Upgrade(new Position(6,2), "Sword", 1);
+  Item treasure = new Treasure(new Position(6, 6));
   Maze maze = new Maze();
-  maze.setPlayer(p1.getPosition());
-  maze.setMonster(m1.position);
-  maze.placeItem(item);
+  maze.setPlayer(player.getPosition(), player);
+  maze.setMonster(monster.position, monster);
+  maze.placeItem(upgrade);
+  maze.placeItem(treasure);
 
   while (true) {
+    player.getStats();
     maze.showMaze();
-    p1.move(moveInput(sc), maze);
-    if (!(maze.getCell(m1.position).obstacle == null)){
-      m1.move('W', maze);//Random move
+    player.move(moveInput(sc), maze);
+    if (!(maze.getCell(monster.position).obstacle == null)){
+      monster.move('W', maze);//Random move
     }
   }
   }

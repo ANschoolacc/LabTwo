@@ -2,12 +2,12 @@ package se.labTwo;
 
 class Cell {
   Obstacle obstacle;
-  boolean hasPlayer;
+  Player player;
   Item item;
 
   public Cell(Obstacle obstacle) {
     this.obstacle = obstacle;
-    boolean hasPlayer = false;
+    this.player = null;
     this.item = null;
   }
 
@@ -17,15 +17,17 @@ class Cell {
 
   @Override
   public String toString() {
-    if (hasPlayer) {
+    if (player != null) {
       return "P";
     } else if (obstacle instanceof Monster) {
       return "M";
     } else if (obstacle instanceof Wall) {
       return "#";
-    } else if (item != null) {
-      return "I";
-    } else {
+    } else if (item instanceof Upgrade) {
+      return "U";
+    } else if (item instanceof Treasure) {
+      return "T";
+    }else {
       return ".";
     }
   }
