@@ -2,22 +2,16 @@ package se.labTwo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class Player implements Movable {
-  private final String name = "Hero";
   private Position position = new Position(1, 1);
-  private int health = 10;
-  private int strength = 1;
-  private final List<Item> items = new ArrayList<Item>();
+  private int health ;
+  private int strength;
+  private final List<Item> items = new ArrayList<>();
 
   public Player(int health, int strength) {
     this.health = health;
     this.strength = strength;
-  }
-
-  public String getName() {
-    return name;
   }
 
   @Override
